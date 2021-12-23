@@ -1,5 +1,7 @@
-# Project-BPA
-Sistema de Gestão Bancário - Projecto do 2ª ano feito com Spring Boot e Interface Gráfica 
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/andersonigfrancisco/Project-BPA/main/Service-Front-End/logo%20sem%20fundo.png?token=AO522YZQ44WQP44MDZ7SXY3BYTWJW" width="224px"/> <br/>
+</h1>
+<p align="center">Sistema de Gestão Bancário - Projecto do 2ª ano feito com Spring Boot e Interface Gráfica <br/>
 
 
 Regra de commits: 
