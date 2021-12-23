@@ -19,10 +19,12 @@ public class Coin {
     public String sigla;
     
     @Basic(optional = false)
+    @Column(insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdat;
     
     @Basic(optional = false)
+    @Column(insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedat;
     

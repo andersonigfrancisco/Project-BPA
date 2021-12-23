@@ -6,14 +6,13 @@
 package BPA.serviceapi.Models;
 import java.util.Date;
 import javax.persistence.*;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
+import javax.transaction.Transactional;
 /**
  *
  * @author THL
  */
-@Entity(name="companies")
-public class Companies {
+@Entity(name="typeaccount")
+public class TypeAccount {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +21,12 @@ public class Companies {
     @Column(nullable=false, length=150)
     public String designation;
     
-    @Column(nullable=false, length=2000)
-    public String description;
+    @Column(nullable=false, length=150)
+    public String code;
     
-    @NotFound(action = NotFoundAction.IGNORE)
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Personid", referencedColumnName = "id",nullable = true)
-    public Person Person;
+    @Column(nullable=false, length=150)
+    public String description;
+   
     
     @Basic(optional = false)
     @Column(insertable = false, updatable = false)
@@ -56,20 +54,20 @@ public class Companies {
         this.designation = designation;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Person getPerson() {
-        return Person;
-    }
-
-    public void setPerson(Person Person) {
-        this.Person = Person;
     }
 
     public Date getCreatedat() {
@@ -87,5 +85,5 @@ public class Companies {
     public void setUpdatedat(Date updatedat) {
         this.updatedat = updatedat;
     }
-   
+    
 }
