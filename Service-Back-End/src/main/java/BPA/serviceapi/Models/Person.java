@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package BPA.serviceapi.Models;
+import java.util.Date;
 import java.util.UUID;
 import javax.persistence.*;
 
@@ -39,6 +40,14 @@ public class Person {
     
     @Column(nullable=false, length=20)
     public String Persontype;
+    
+    @Basic(optional = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdat;
+    
+    @Basic(optional = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedat;
     
 
     public int getId() {
@@ -87,6 +96,22 @@ public class Person {
 
     public void setPersontype(String Persontype) {
         this.Persontype = Persontype;
+    }
+
+    public Date getCreatedat() {
+        return createdat;
+    }
+
+    public void setCreatedat(Date createdat) {
+        this.createdat = createdat;
+    }
+
+    public Date getUpdatedat() {
+        return updatedat;
+    }
+
+    public void setUpdatedat(Date updatedat) {
+        this.updatedat = updatedat;
     }
     
 }
