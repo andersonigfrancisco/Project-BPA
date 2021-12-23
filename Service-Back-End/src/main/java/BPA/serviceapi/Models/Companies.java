@@ -5,13 +5,17 @@
  */
 package BPA.serviceapi.Models;
 import javax.persistence.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 /**
  *
  * @author THL
  */
 @Entity(name="companies")
 public class Companies {
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     
     @Column(nullable=false, length=150)
@@ -20,14 +24,9 @@ public class Companies {
     @Column(nullable=false, length=2000)
     public String description;
     
-    
-    /*
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name = "PersonId")
-    private List<Person> Person;
-    */
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PersonId", referencedColumnName = "id",nullable = false)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Personid", referencedColumnName = "id",nullable = true)
     public Person Person;
 
     public int getId() {

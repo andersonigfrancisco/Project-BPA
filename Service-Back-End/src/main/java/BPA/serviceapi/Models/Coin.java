@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Coin {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     
     @Column(nullable=false, length=50)

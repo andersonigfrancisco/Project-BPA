@@ -27,10 +27,10 @@ public class PersonService {
     {
 	try 
 	{
-            if(data.firtName.equals("")){
+            if(data.firtname.equals("")){
                 throw new BeanNotFoundException("Informe O primerio nome do cliente!");
             }
-            if(data.lastName.equals("")){
+            if(data.lastname.equals("")){
                 throw new BeanNotFoundException("Informe O ultimo nome do cliente!");
             } 
             return respository.save(data);

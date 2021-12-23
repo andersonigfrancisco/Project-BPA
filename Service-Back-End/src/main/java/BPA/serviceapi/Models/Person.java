@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package BPA.serviceapi.Models;
-import java.util.Set;
+import java.util.UUID;
 import javax.persistence.*;
 
 /**
@@ -14,20 +14,28 @@ import javax.persistence.*;
 @Entity(name="person")
 public class Person {
     
+    
+    //@Column(name = "TENANT_ENT_ID", nullable = false, columnDefinition = "int default 1")
+    
     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     
     @Column(nullable=false, length=50)
-    public String firtName;
+    public String firtname;
     
+   
     @Column(nullable=false, length=50)
-    public String lastName;
+    public String lastname;
+    
     
     @Column(nullable=false, length=14)
     public String gender;
     
+    
     @Column(nullable=false, length=14)
     public String nif;
+    
     
     @Column(nullable=false, length=20)
     public String Persontype;
@@ -42,19 +50,19 @@ public class Person {
     }
 
     public String getFirtName() {
-        return firtName;
+        return firtname;
     }
 
     public void setFirtName(String firtName) {
-        this.firtName = firtName;
+        this.firtname = firtName;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public String getGender() {

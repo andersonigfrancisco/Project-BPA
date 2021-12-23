@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @author THL
  */
 @RestController
-@RequestMapping("/Companies")
+@RequestMapping("/companies")
 public class CompaniesController {
     
     @Autowired

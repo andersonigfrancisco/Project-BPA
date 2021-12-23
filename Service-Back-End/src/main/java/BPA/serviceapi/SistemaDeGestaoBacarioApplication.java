@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SistemaDeGestaoBacarioApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SistemaDeGestaoBacarioApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+	    SpringApplication.run(SistemaDeGestaoBacarioApplication.class, args);
+        
+    }
 }
