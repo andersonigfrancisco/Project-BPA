@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package BPA.serviceapi.Models;
+import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -28,6 +29,14 @@ public class Companies {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Personid", referencedColumnName = "id",nullable = true)
     public Person Person;
+    
+    @Basic(optional = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdat;
+    
+    @Basic(optional = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedat;
 
     public int getId() {
         return id;
@@ -59,6 +68,22 @@ public class Companies {
 
     public void setPerson(Person Person) {
         this.Person = Person;
+    }
+
+    public Date getCreatedat() {
+        return createdat;
+    }
+
+    public void setCreatedat(Date createdat) {
+        this.createdat = createdat;
+    }
+
+    public Date getUpdatedat() {
+        return updatedat;
+    }
+
+    public void setUpdatedat(Date updatedat) {
+        this.updatedat = updatedat;
     }
    
 }
