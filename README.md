@@ -6,6 +6,18 @@
 
 Regra de commits: 
 
+passos para realização de commit: 
+
+1º git add . -> Para adicionar todas as alterações na memoria cache go git no teu computador
+
+2º git status -> para verificar o estado das alterações apartir do teu computador
+
+3º git commit -m"" -> dentro das virgulas altas colocar o comentario das suas alteraçõs feitas no projecto 
+
+4º git pull -> para pegar as alteraçõs do git mandada pelos outros membros da equipa
+
+5º git push -> para mandar as tuas alterações no git hub
+
 |   Commit type              | Emoji                                         |
 |:---------------------------|:----------------------------------------------|
 | Initial commit             | :tada: `:tada:`                               |
