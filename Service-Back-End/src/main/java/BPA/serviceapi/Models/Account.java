@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package BPA.serviceapi.Models;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.NotFound;
@@ -12,6 +13,7 @@ import org.hibernate.annotations.NotFoundAction;
  *
  * @author THL
  */
+@JsonIgnoreProperties(value = { "userName" })
 @Entity(name="account")
 public class Account {
     
@@ -19,10 +21,11 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     
-    @NotFound(action = NotFoundAction.IGNORE)
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "personid", referencedColumnName = "id",nullable = true)
+    //@NotFound(action = NotFoundAction.IGNORE)
+   @OneToOne(mappedBy="personid" ,cascade=CascadeType.ALL)
+    //@JoinColumn(name = "personid", referencedColumnName = "id",nullable = true)
     public Person Person;
+    
     
     @Column(nullable=false, length=50)
     public String iban;
@@ -155,6 +158,5 @@ public class Account {
 
     public void setCoinid(int coinid) {
         this.coinid = coinid;
-    }
-    
+    } 
 }

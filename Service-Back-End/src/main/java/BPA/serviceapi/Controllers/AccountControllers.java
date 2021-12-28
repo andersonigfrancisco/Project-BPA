@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @author THL
  */
 @RestController
-@RequestMapping("/Account")
+@RequestMapping("/account")
 public class AccountControllers {
     
     @Autowired

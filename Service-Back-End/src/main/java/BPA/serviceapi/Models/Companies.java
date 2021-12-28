@@ -25,7 +25,7 @@ public class Companies {
     @Column(nullable=false, length=2000)
     public String description;
     
-    @NotFound(action = NotFoundAction.IGNORE)
+    @NotFound(action = NotFoundAction.EXCEPTION)
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Personid", referencedColumnName = "id",nullable = true)
     public Person Person;
@@ -39,6 +39,8 @@ public class Companies {
     @Column(insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedat;
+    
+    
 
     public int getId() {
         return id;
