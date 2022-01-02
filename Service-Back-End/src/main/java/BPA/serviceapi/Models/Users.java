@@ -4,35 +4,34 @@
  * and open the template in the editor.
  */
 package BPA.serviceapi.Models;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Date;
+import java.util.UUID;
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 /**
  *
  * @author THL
  */
-@Entity(name="companies")
-public class Companies {
+@Entity(name="users")
+public class Users {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     
     @Column(nullable=false, length=150)
-    public String designation;
+    public String email;
     
-    @Column(nullable=false, length=2000)
-    public String description;
-    
+    @Column(nullable=false, length=150)
+    public String password;
     
     @NotFound(action = NotFoundAction.EXCEPTION)
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Personid", referencedColumnName = "id",nullable = true)
+    @JoinColumn(name = "personid", referencedColumnName = "id",nullable = true)
     public Person Person;
-   
-   
+    
     @Basic(optional = false)
     @Column(insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -42,7 +41,7 @@ public class Companies {
     @Column(insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedat;
-    
+
     public int getId() {
         return id;
     }
@@ -51,20 +50,20 @@ public class Companies {
         this.id = id;
     }
 
-    public String getDesignation() {
-        return designation;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDesignation(String designation) {
-        this.designation = designation;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Person getPerson() {
@@ -90,5 +89,6 @@ public class Companies {
     public void setUpdatedat(Date updatedat) {
         this.updatedat = updatedat;
     }
-   
+    
+    
 }

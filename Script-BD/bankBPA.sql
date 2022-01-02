@@ -141,7 +141,7 @@ CREATE TABLE `services` (
   `designation` varchar(150) NOT NULL,
   `price` float NOT NULL,
   `description` text DEFAULT NULL,
-  `companyId` int(11) DEFAULT NULL,
+  `companyid` int(11) DEFAULT NULL,
   `createdat` datetime DEFAULT current_timestamp(),
   `updatedat` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -248,7 +248,7 @@ ALTER TABLE `referencePayment`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `companyId` (`companyId`);
+  ADD KEY `companyid` (`companyid`);
 
 --
 -- Índices para tabela `typeAccount`
@@ -369,7 +369,7 @@ ALTER TABLE `referencePayment`
 -- Limitadores para a tabela `services`
 --
 ALTER TABLE `services`
-  ADD CONSTRAINT `services_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `companies` (`id`);
+  ADD CONSTRAINT `services_ibfk_1` FOREIGN KEY (`companyid`) REFERENCES `companies` (`id`);
 COMMIT;
 
 ALTER TABLE `companies`
@@ -417,8 +417,6 @@ Obj para Companies
 
 Obj para account 
 {
-  "iban":"sss",
-  "accountnumber":"1",
   "status":"fsfsfsf",
   "amount":10000,
   "accounttypeid":1,
@@ -433,7 +431,19 @@ Obj para typeaccount
   "code":"C001",
   "description":"conta corrente do cliente"
 }
+
+Obj para servicesusers 
+[
+	{
+      "designation":"",
+      "price":,
+      "description":"",
+      "Companies":{
+        "id":1
+      }
+    }
+]
 select *from account
 */
-
-
+select *from services
+companiesservices

@@ -4,17 +4,14 @@
  * and open the template in the editor.
  */
 package BPA.serviceapi.Repository;
-import BPA.serviceapi.Models.*;
-import java.util.List;
+
+import BPA.serviceapi.Models.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 /**
  *
  * @author THL
  */
-public interface AccountRepository extends JpaRepository<Account, Integer>{
-    
-    List<Account> findByAccountnumber(String accountnumber);
+public interface UsersRepository extends JpaRepository<Users, Integer>{
     
 }

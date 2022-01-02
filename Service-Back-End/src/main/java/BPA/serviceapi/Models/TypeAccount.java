@@ -5,6 +5,7 @@
  */
 package BPA.serviceapi.Models;
 import java.util.Date;
+import java.util.UUID;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 /**
@@ -22,7 +23,7 @@ public class TypeAccount {
     public String designation;
     
     @Column(nullable=false, length=150)
-    public String code;
+    public String code = UUID.randomUUID().toString();
     
     @Column(nullable=false, length=150)
     public String description;

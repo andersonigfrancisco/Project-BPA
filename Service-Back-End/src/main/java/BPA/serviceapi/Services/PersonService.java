@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class PersonService {
     
     @Autowired
-     private PersonRepository respository;
+    private PersonRepository respository;
     
     public Person savePerson(Person data)
     {

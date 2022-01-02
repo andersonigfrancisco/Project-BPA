@@ -11,6 +11,8 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import BPA.serviceapi.Repository.AccountRepository;
 import javax.transaction.Transactional;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 /**
  *
@@ -27,23 +29,64 @@ public class AccountService {
     {
 	try 
 	{
-            if(data.iban.equals("")){
-                throw new BeanNotFoundException("Erro ao gerar o Iban!");
-            }
-            if(data.accountnumber.equals("")){
-                throw new BeanNotFoundException("Erro ao gerar o numero da conta");
-            } 
-            if(data.status.equals("")){
-                throw new BeanNotFoundException("Erro ao definir estado da conta");
-            } 
-            if(data.amount<0){
-                throw new BeanNotFoundException("Erro ao definir saldo da conta");
-            } 
-            if(data.accounttypeid==0){
-                throw new BeanNotFoundException("Erro ao definir o tipo da conta");
-            } 
-           
-           return respository.save(data);
+            int[] cod = {0,0,0,0,0,0,0,0,0,0,0};
+            String str="";
+            
+            ResponseEntity<List<Account>> accountExist;
+            
+            while (true)
+                {
+                    str = "";
+                    int contA = 9 * cod.length, contB = 0;
+
+                    for (int i = 0; i < cod.length; i++)
+                    {
+                        str += cod[i];
+                        contB += cod[i];
+                    }
+                    
+                    
+                    accountExist = new ResponseEntity<List<Account>>(respository.findByAccountnumber(str), HttpStatus.OK); 
+                    
+                    System.out.println(accountExist.toString());
+                    
+                    if (accountExist.toString().equals("<200 OK OK,[],[]>"))  
+                    {
+                        data.iban="AO0612344321"+str+"17";
+                        data.accountnumber=str;
+                        if(data.iban.equals("")){
+                            throw new BeanNotFoundException("Erro ao gerar o Iban!");
+                        }
+                        if(data.accountnumber.equals("")){
+                            throw new BeanNotFoundException("Erro ao gerar o numero da conta");
+                        } 
+                        if(data.status.equals("")){
+                            throw new BeanNotFoundException("Erro ao definir estado da conta");
+                        } 
+                        if(data.amount<0){
+                            throw new BeanNotFoundException("Erro ao definir saldo da conta");
+                        } 
+                        if(data.accounttypeid==0){
+                            throw new BeanNotFoundException("Erro ao definir o tipo da conta");
+                        } 
+                        
+                       return respository.save(data);
+                    } 
+                    cod[cod.length - 1] += 1;
+                    for (int j = 0; j < cod.length; j++)
+                    {
+                        try
+                        {
+                            if (cod[j] == 10)
+                            {
+                                cod[j] = 0;
+                                cod[j - 1] += 1;
+                                j = 0;
+                            }
+                        }
+                        catch (NoSuchElementException k){ throw new BeanNotFoundException("conta não encontrado!");}
+                    }   
+                }
 	} 
         catch (NoSuchElementException k)
 	{
@@ -88,4 +131,8 @@ public class AccountService {
 	}
     }
     
+    
+   
+        
+      
 }

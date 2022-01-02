@@ -21,11 +21,10 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     
-    //@NotFound(action = NotFoundAction.IGNORE)
-   @OneToOne(mappedBy="personid" ,cascade=CascadeType.ALL)
-    //@JoinColumn(name = "personid", referencedColumnName = "id",nullable = true)
-    public Person Person;
     
+    @OneToOne
+    @JoinColumn(name = "personid")
+    public Person Person;
     
     @Column(nullable=false, length=50)
     public String iban;

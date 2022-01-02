@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package BPA.serviceapi.Models;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.NotFound;
@@ -13,8 +12,8 @@ import org.hibernate.annotations.NotFoundAction;
  *
  * @author THL
  */
-@Entity(name="companies")
-public class Companies {
+@Entity(name="services")
+public class Services {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,15 +22,15 @@ public class Companies {
     @Column(nullable=false, length=150)
     public String designation;
     
-    @Column(nullable=false, length=2000)
+    @Column(nullable=false, length=150)
+    public double price;
+    
+    @Column(nullable=false, length=150)
     public String description;
     
-    
-    @NotFound(action = NotFoundAction.EXCEPTION)
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Personid", referencedColumnName = "id",nullable = true)
-    public Person Person;
-   
+    @OneToOne
+    @JoinColumn(name = "companyid")
+    public Companies Companies;
    
     @Basic(optional = false)
     @Column(insertable = false, updatable = false)
@@ -42,7 +41,7 @@ public class Companies {
     @Column(insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedat;
-    
+
     public int getId() {
         return id;
     }
@@ -59,6 +58,14 @@ public class Companies {
         this.designation = designation;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -67,13 +74,7 @@ public class Companies {
         this.description = description;
     }
 
-    public Person getPerson() {
-        return Person;
-    }
-
-    public void setPerson(Person Person) {
-        this.Person = Person;
-    }
+    
 
     public Date getCreatedat() {
         return createdat;
@@ -90,5 +91,12 @@ public class Companies {
     public void setUpdatedat(Date updatedat) {
         this.updatedat = updatedat;
     }
-   
+
+    public Companies getCompanies() {
+        return Companies;
+    }
+
+    public void setCompanies(Companies Companies) {
+        this.Companies = Companies;
+    }
 }
