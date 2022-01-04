@@ -6,6 +6,8 @@
 package Views;
 
 import Views.ClienteFrom.Form_addCliente;
+import Views.Service.Forem_addServices;
+import Views.Service.Form_addServices;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -121,6 +123,11 @@ public class Form_home extends javax.swing.JFrame {
         jMenu3.setText("Conta");
 
         jMenuItem5.setText("Abrir nova conta");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
 
         jMenuItem6.setText("Visualizar contas");
@@ -210,6 +217,10 @@ public class Form_home extends javax.swing.JFrame {
         new Form_login().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new ModalForme(new Form_addServices());
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments

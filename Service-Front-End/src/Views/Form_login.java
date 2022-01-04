@@ -171,12 +171,8 @@ public class Form_login extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowActivated
 
-    
-     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       
-        
-        
 	int input = JOptionPane.showConfirmDialog(null, "Encerrar a aplicação?", "Banco Popular de Angola",
 	JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
         if(input==0){
@@ -188,7 +184,7 @@ public class Form_login extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       if(txt_username.getText().equals(""))
         JOptionPane.showMessageDialog(null, "Informe o seu nome de usuário!");
-      else if (txt_senha.getText().equals(""))
+      else if (jPasswordField1.getText().equals(""))
         JOptionPane.showMessageDialog(null, "Informe a sua senha!");
       else
       {
