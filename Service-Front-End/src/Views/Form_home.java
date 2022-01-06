@@ -8,6 +8,8 @@ package Views;
 import Views.ClienteFrom.Form_ListarClientes;
 import Views.ClienteFrom.Form_addCliente;
 import Views.ClienteFrom.Form_addClientecolectivo;
+import Views.CountFrom.Form_ListarConta;
+import Views.CountFrom.Form_addConta;
 import Views.Service.Form_addServices;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -146,6 +148,11 @@ public class Form_home extends javax.swing.JFrame {
         jMenu3.add(jMenuItem5);
 
         jMenuItem6.setText("Visualizar contas");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
 
         jMenuBar1.add(jMenu3);
@@ -233,7 +240,7 @@ public class Form_home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        new ModalForme(new Form_addServices());
+        new ModalForme(new Form_addConta());
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
@@ -243,6 +250,10 @@ public class Form_home extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
          new ModalForme(new Form_ListarClientes());
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        new ModalForme(new Form_ListarConta());
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
