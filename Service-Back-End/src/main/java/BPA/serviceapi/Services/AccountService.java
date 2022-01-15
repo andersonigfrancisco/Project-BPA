@@ -127,7 +127,7 @@ public class AccountService {
 	}
     }
     
-        public Account teste(String count){
+    public Account getAccountnumber(String count){
 	try 
 	{
            return respository.findByaccountnumber(count);
@@ -135,6 +135,17 @@ public class AccountService {
         catch (NoSuchElementException k)
 	{
             throw new BeanNotFoundException("Erro ao listar conta");
+	}
+    }
+    
+    public Account getAccountiban(String iban){
+	try 
+	{
+           return respository.findByIban(iban);
+	} 
+        catch (NoSuchElementException k)
+	{
+            throw new BeanNotFoundException("Conta não encontrada");
 	}
     }
         

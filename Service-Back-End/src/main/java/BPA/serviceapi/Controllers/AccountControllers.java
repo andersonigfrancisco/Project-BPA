@@ -39,8 +39,7 @@ public class AccountControllers {
        
 	return service.listAllAccount();
     }
-   
-   
+  
     @GetMapping(path="/{id}")
     public ResponseEntity<Account> get(@PathVariable("id") int id){
         try {
@@ -50,7 +49,6 @@ public class AccountControllers {
             return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
         }
     }
-    
     
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Account account, @PathVariable Integer id) {
@@ -65,12 +63,51 @@ public class AccountControllers {
     }
     
     @PostMapping(path="/deposit")
-    public Account deposit (@RequestBody Deposit data)
+    public String deposit (@RequestBody Deposit data)
     {
-        Account account = service.teste(data.accountnumber);
-        account.amount= account.amount+data.amount;
-        account.setId(service.teste(data.accountnumber).id);
-        service.saveAccountalt(account);
-        return account;
+       
+        Account account = service.getAccountnumber(data.accountnumber);
+        if(account!=null)
+        {
+            account.amount= account.amount+data.amount;
+            account.setId(service.getAccountnumber(data.accountnumber).id);
+            service.saveAccountalt(account);
+            return  "Depositoo feitocom sucessoo!";
+        }
+        else{
+             return "Conta Invalida";
+        }
+    } 
+    
+    @PostMapping(path="/transfer")
+    public String transfer (@RequestBody transfer data)
+    {
+        Account creditaccount = service.getAccountiban(data.iban);
+        
+        Account debitaccount = service.getAccountnumber(data.debitaccountnumber);
+
+        if(creditaccount!=null)
+        {
+            if(debitaccount.amount>data.amount || debitaccount.amount==data.amount)
+            {
+                creditaccount.amount = creditaccount.amount+data.amount;
+                debitaccount.amount = debitaccount.amount-data.amount;
+                
+                creditaccount.setId(service.getAccountiban(data.iban).id);
+                service.saveAccountalt(creditaccount);
+                
+                debitaccount.setId(service.getAccountnumber(data.debitaccountnumber).id);
+                service.saveAccountalt(debitaccount);
+                
+                return "Transferencia feita com sucesso!";
+            }
+            else
+            {
+                return "O seu saldo da conta não é suficiente";
+            }
+        }
+        else{
+            return "Conta Invalida";
+        }
     } 
 }
