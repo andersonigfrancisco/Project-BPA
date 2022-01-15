@@ -38,8 +38,10 @@ public class Account {
     @Column(nullable=false, length=60)
     public float amount;
     
-    @Column(nullable=false, length=60)
-    public int accounttypeid;
+    @OneToOne
+    @JoinColumn(name = "accounttypeid")
+    public TypeAccount typeAccount;
+    
     
     @Basic(optional = false)
     @Column(insertable = false, updatable = false)
@@ -60,9 +62,11 @@ public class Account {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedat;
     
-    @Column(nullable=false, length=60)
-    public int coinid;
-
+    @OneToOne
+    @JoinColumn(name = "coinid")
+    public  Coin coin;
+    
+    
     public int getId() {
         return id;
     }
@@ -111,13 +115,7 @@ public class Account {
         this.amount = amount;
     }
 
-    public int getAccounttypeid() {
-        return accounttypeid;
-    }
-
-    public void setAccounttypeid(int accounttypeid) {
-        this.accounttypeid = accounttypeid;
-    }
+   
 
     public Date getOpenat() {
         return openat;
@@ -151,11 +149,20 @@ public class Account {
         this.updatedat = updatedat;
     }
 
-    public int getCoinid() {
-        return coinid;
+    public TypeAccount getTypeAccount() {
+        return typeAccount;
     }
 
-    public void setCoinid(int coinid) {
-        this.coinid = coinid;
-    } 
+    public void setTypeAccount(TypeAccount typeAccount) {
+        this.typeAccount = typeAccount;
+    }
+
+    public Coin getCoin() {
+        return coin;
+    }
+
+    public void setCoin(Coin coin) {
+        this.coin = coin;
+    }
+
 }

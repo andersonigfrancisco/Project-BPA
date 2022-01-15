@@ -27,12 +27,19 @@ public class PersonService {
     {
 	try 
 	{
-            if(data.firtname.equals("")){
-                throw new BeanNotFoundException("Informe O primerio nome do cliente!");
+            if(data.Persontype.equals("Singular")){
+                if(data.firtname.equals(""))
+                    throw new BeanNotFoundException("Informe O primerio nome do cliente!");
+                if(data.lastname.equals(""))
+                    throw new BeanNotFoundException("Informe O ultimo nome do cliente!");
+            }else
+            {
+                data.gender="null";
+                data.lastname="null";
+                if(data.firtname.equals(""))
+                    throw new BeanNotFoundException("Informe O primerio nome do cliente!");
             }
-            if(data.lastname.equals("")){
-                throw new BeanNotFoundException("Informe O ultimo nome do cliente!");
-            } 
+           
             return respository.save(data);
 	} 
         catch (NoSuchElementException k)

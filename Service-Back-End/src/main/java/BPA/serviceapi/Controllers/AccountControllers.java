@@ -33,12 +33,14 @@ public class AccountControllers {
     public void deletbyId(@PathVariable("id") int id){
         service.deleteAccount(id);
     }
-    
+   
     @GetMapping(path="")
     public List<Account> get(){
+       
 	return service.listAllAccount();
     }
-    
+   
+   
     @GetMapping(path="/{id}")
     public ResponseEntity<Account> get(@PathVariable("id") int id){
         try {
@@ -48,6 +50,7 @@ public class AccountControllers {
             return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
         }
     }
+    
     
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Account account, @PathVariable Integer id) {
@@ -60,4 +63,14 @@ public class AccountControllers {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    @PostMapping(path="/deposit")
+    public Account deposit (@RequestBody Deposit data)
+    {
+        Account account = service.teste(data.accountnumber);
+        account.amount= account.amount+data.amount;
+        account.setId(service.teste(data.accountnumber).id);
+        service.saveAccountalt(account);
+        return account;
+    } 
 }

@@ -19,7 +19,7 @@ public class Person {
     //@Column(name = "TENANT_ENT_ID", nullable = false, columnDefinition = "int default 1")
     
     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     
     @Column(nullable=false, length=50)

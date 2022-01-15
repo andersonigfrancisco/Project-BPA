@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 public class AccountService {
     
     @Autowired
-    private AccountRepository respository;
+    public AccountRepository respository;
     
     public Account saveAccount(Account data)
     {
@@ -44,11 +44,7 @@ public class AccountService {
                         str += cod[i];
                         contB += cod[i];
                     }
-                    
-                    
                     accountExist = new ResponseEntity<List<Account>>(respository.findByAccountnumber(str), HttpStatus.OK); 
-                    
-                    System.out.println(accountExist.toString());
                     
                     if (accountExist.toString().equals("<200 OK OK,[],[]>"))  
                     {
@@ -66,7 +62,7 @@ public class AccountService {
                         if(data.amount<0){
                             throw new BeanNotFoundException("Erro ao definir saldo da conta");
                         } 
-                        if(data.accounttypeid==0){
+                        if(data.typeAccount.id==0){
                             throw new BeanNotFoundException("Erro ao definir o tipo da conta");
                         } 
                         
@@ -131,8 +127,20 @@ public class AccountService {
 	}
     }
     
-    
-   
+        public Account teste(String count){
+	try 
+	{
+           return respository.findByaccountnumber(count);
+	} 
+        catch (NoSuchElementException k)
+	{
+            throw new BeanNotFoundException("Erro ao listar conta");
+	}
+    }
         
+    public Account saveAccountalt(Account data)
+    {
+        return respository.save(data);
+    }
       
 }
