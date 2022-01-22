@@ -14,6 +14,6 @@ public class transfer {
     public String iban;
     
     public float amount;
-    
+
     public String debitaccountnumber;    
 }

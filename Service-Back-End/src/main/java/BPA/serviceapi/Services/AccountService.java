@@ -115,6 +115,7 @@ public class AccountService {
             throw new BeanNotFoundException("Erro ao listar conta");
 	}
     }
+    
     public Account getAccount(Integer id){
         
 	try 

@@ -86,4 +86,15 @@ public class PersonService {
             throw new BeanNotFoundException("Cliente não encontrado!");
 	}
     }
+    
+    public Person getPersonnif(String nif){
+	try 
+	{
+            return respository.findBynif(nif);
+	} 
+        catch (NoSuchElementException k)
+	{
+            throw new BeanNotFoundException("Cliente não encontrado!");
+	}
+    }
 }

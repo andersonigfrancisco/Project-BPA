@@ -110,4 +110,31 @@ public class AccountControllers {
             return "Conta Invalida";
         }
     } 
+    
+    @PostMapping(path="/saque")
+    public String saque (@RequestBody Saque data)
+    {
+        Account debitaccount = service.getAccountnumber(data.debitaccountnumber);
+        
+        if(debitaccount!=null)
+        {
+            if(data.amount<0)
+            {
+                return "Valor invalido";
+            }
+            else{
+                if(debitaccount.amount>data.amount || debitaccount.amount==data.amount)
+                {
+                    debitaccount.amount = debitaccount.amount-data.amount;
+                    debitaccount.setId(service.getAccountnumber(data.debitaccountnumber).id);
+                    service.saveAccountalt(debitaccount);
+                    return "Levantamento com sucesso!";
+                }
+                else
+                    return "O seu saldo da conta não é suficiente";
+            }
+        }
+        else
+            return "Conta Invalida";
+    } 
 }

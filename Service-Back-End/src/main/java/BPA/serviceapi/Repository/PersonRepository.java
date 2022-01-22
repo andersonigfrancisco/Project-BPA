@@ -10,4 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author THL
  */
-public interface PersonRepository extends JpaRepository<Person, Integer>{}
+public interface PersonRepository extends JpaRepository<Person, Integer>
+{
+    Person findBynif(String nif);
+}

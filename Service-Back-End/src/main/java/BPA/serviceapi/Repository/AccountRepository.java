@@ -7,7 +7,6 @@ package BPA.serviceapi.Repository;
 import BPA.serviceapi.Models.*;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 /**
  *
@@ -20,4 +19,8 @@ public interface AccountRepository extends JpaRepository<Account, Integer>{
     Account findByaccountnumber(String accountnumber);
     
     Account findByIban(String iban);
+    
+    
+                         
+    //Account findByPerson(Person person);
 }
