@@ -5,26 +5,26 @@
  */
 package Views.CountFrom;
 
-import Views.ClienteFrom.*;
-import Views.Form_home;
-import Views.Generic;
-import Views.ModalForme;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Window;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
 
+import Views.ModalForme;
+import Controllers.Account.TableModels;
+import Controllers.RequestController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Form_ListarConta extends javax.swing.JFrame {
-
-    public Form_ListarConta() {
-        initComponents();
-    }
+    
+    private TableModels tableModels;
    
+
+    public Form_ListarConta() throws Exception {
+        initComponents();
+        
+        this.tableModels = new TableModels();
+        this.tableModels.getdata(new RequestController().getAccount("http://localhost:3000/account"));
+        this.tb_contas.setModel(tableModels);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,7 +44,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_contas = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -181,7 +181,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(64, 64, 64)
@@ -195,25 +195,22 @@ public class Form_ListarConta extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Lista de todos Clientes");
 
-        jTable1.setBackground(new java.awt.Color(50, 50, 56));
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_contas.setBackground(new java.awt.Color(50, 50, 56));
+        tb_contas.setForeground(new java.awt.Color(255, 255, 255));
+        tb_contas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Primeiro Nome", "Ultimo Nome", "Genero", "Tipo de Cliente"
+
             }
         ));
-        jTable1.setToolTipText("");
-        jTable1.setFillsViewportHeight(true);
-        jTable1.setFocusCycleRoot(true);
-        jTable1.setGridColor(new java.awt.Color(50, 50, 56));
-        jTable1.setSelectionBackground(new java.awt.Color(50, 50, 56));
-        jScrollPane1.setViewportView(jTable1);
+        tb_contas.setToolTipText("");
+        tb_contas.setFillsViewportHeight(true);
+        tb_contas.setFocusCycleRoot(true);
+        tb_contas.setGridColor(new java.awt.Color(50, 50, 56));
+        tb_contas.setSelectionBackground(new java.awt.Color(50, 50, 56));
+        jScrollPane1.setViewportView(tb_contas);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icon/icons8-remover-18.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -225,6 +222,11 @@ public class Form_ListarConta extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 181, 67));
         jButton1.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jButton1.setLabel("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(189, 35, 0));
         jButton2.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
@@ -238,7 +240,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -290,7 +292,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 727, Short.MAX_VALUE))
+                        .addGap(25, 957, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -321,9 +323,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,7 +335,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-      
+       
        
     }//GEN-LAST:event_formWindowActivated
 
@@ -363,11 +363,19 @@ public class Form_ListarConta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_ListarConta().setVisible(true);
+                try {
+                    new Form_ListarConta().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(Form_ListarConta.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -390,6 +398,6 @@ public class Form_ListarConta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tb_contas;
     // End of variables declaration//GEN-END:variables
 }

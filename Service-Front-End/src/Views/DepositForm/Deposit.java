@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BPA.serviceapi.Models;
+package Views.DepositForm;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Deposit {
     public float amount;
     
     public String Signature;
-
+        
     public String getSignature() {
         return Signature;
     }
@@ -29,19 +29,14 @@ public class Deposit {
         return amount;
     }
     
-
     public void setAmount(float amount) {
         this.amount = amount;
     }
     
-   
     public String getAccountnumber() {
         return accountnumber;
     }
-
     public void setAccountnumber(String accountnumber) {
         this.accountnumber = accountnumber;
     }
-    
-    
 }

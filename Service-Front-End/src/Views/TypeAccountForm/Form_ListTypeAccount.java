@@ -3,28 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views.CountFrom;
+package Views.TypeAccountForm;
 
-import Views.ClienteFrom.*;
-import Views.Form_home;
-import Views.Generic;
+import Views.CoinForm.*;
+import Controllers.RequestController;
+import Controllers.TypeAccount.TableModels;
+import Views.MessageBox;
 import Views.ModalForme;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Window;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-public class Form_ListarConta extends javax.swing.JFrame {
 
-    public Form_ListarConta() {
+public class Form_ListTypeAccount extends javax.swing.JFrame {
+    
+    private final TableModels tableModels;
+    
+    public Form_ListTypeAccount() throws Exception {
         initComponents();
+        
+        this.tableModels = new TableModels();
+        this.tableModels.getdata(new RequestController().getTypeAccount("http://localhost:3000/typeaccount"));
+        this.tb_contas.setModel(tableModels);
     }
-   
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,10 +46,10 @@ public class Form_ListarConta extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_contas = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Banco Popular de Angola");
@@ -78,7 +80,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Listar todas as contas");
+        jLabel10.setText("Tipo de Conta");
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icon/icons8-adicionar-dólar-18.png"))); // NOI18N
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,10 +103,12 @@ public class Form_ListarConta extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10))
         );
 
         jPanel4.setBackground(new java.awt.Color(50, 50, 56));
@@ -181,7 +185,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(64, 64, 64)
@@ -193,27 +197,24 @@ public class Form_ListarConta extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Lista de todos Clientes");
+        jLabel2.setText("Lista de Contas Disponiveis");
 
-        jTable1.setBackground(new java.awt.Color(50, 50, 56));
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_contas.setBackground(new java.awt.Color(50, 50, 56));
+        tb_contas.setForeground(new java.awt.Color(255, 255, 255));
+        tb_contas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Primeiro Nome", "Ultimo Nome", "Genero", "Tipo de Cliente"
+
             }
         ));
-        jTable1.setToolTipText("");
-        jTable1.setFillsViewportHeight(true);
-        jTable1.setFocusCycleRoot(true);
-        jTable1.setGridColor(new java.awt.Color(50, 50, 56));
-        jTable1.setSelectionBackground(new java.awt.Color(50, 50, 56));
-        jScrollPane1.setViewportView(jTable1);
+        tb_contas.setToolTipText("");
+        tb_contas.setFillsViewportHeight(true);
+        tb_contas.setFocusCycleRoot(true);
+        tb_contas.setGridColor(new java.awt.Color(50, 50, 56));
+        tb_contas.setSelectionBackground(new java.awt.Color(50, 50, 56));
+        jScrollPane1.setViewportView(tb_contas);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icon/icons8-remover-18.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -225,10 +226,20 @@ public class Form_ListarConta extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 181, 67));
         jButton1.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jButton1.setLabel("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(189, 35, 0));
-        jButton2.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
-        jButton2.setLabel("Eliminar");
+        btn_delete.setBackground(new java.awt.Color(189, 35, 0));
+        btn_delete.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        btn_delete.setLabel("Eliminar");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -242,19 +253,19 @@ public class Form_ListarConta extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel7)
                                 .addGap(128, 128, 128)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 384, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(477, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
@@ -275,7 +286,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addContainerGap(429, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
@@ -335,7 +346,7 @@ public class Form_ListarConta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-      
+       
        
     }//GEN-LAST:event_formWindowActivated
 
@@ -363,17 +374,41 @@ public class Form_ListarConta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+       
+        try {
+            int rowSelected = this.tb_contas.getSelectedRow();
+            int id = this.tableModels.deleteElement(rowSelected);
+            
+            int result = new RequestController().deleteCoin("http://localhost:3000/typeaccount/"+id);
+            if(result==200){
+                this.tableModels.fireTableDataChanged();
+                int res = new  MessageBox().show("Tipo de Coonta Eliminada com Sucesso!\n Deseja Cadastrar outra Moeda?");
+                
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Form_addCoin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
     public static void main(String args[]) {
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Form_ListarConta().setVisible(true);
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new Form_ListTypeAccount().setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(Form_ListTypeAccount.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_delete;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -390,6 +425,6 @@ public class Form_ListarConta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tb_contas;
     // End of variables declaration//GEN-END:variables
 }

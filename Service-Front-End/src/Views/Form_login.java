@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package Views;
-
+//pin:1725 1805
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -152,6 +155,7 @@ public class Form_login extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
       
+        
         icon.setImage(icon.getImage().getScaledInstance(80, 100, 1));
         UIManager UI=new UIManager();
         UI.put("OptionPane.background",new ColorUIResource(255,255,255));

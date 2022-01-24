@@ -47,10 +47,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -78,7 +75,7 @@
                               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="25" pref="727" max="32767" attributes="0"/>
+                          <EmptySpace min="25" pref="957" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -238,7 +235,7 @@
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel17" min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="194" max="32767" attributes="0"/>
+                      <EmptySpace pref="195" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -330,7 +327,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="675" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="905" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -407,7 +404,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tb_contas">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="38" green="32" red="32" type="rgb"/>
@@ -416,12 +413,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="Primeiro Nome" type="java.lang.Object"/>
-                        <Column editable="true" title="Ultimo Nome" type="java.lang.Object"/>
-                        <Column editable="true" title="Genero" type="java.lang.Object"/>
-                        <Column editable="true" title="Tipo de Cliente" type="java.lang.Object"/>
-                      </Table>
+                      <Table columnCount="0" rowCount="0"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="fillsViewportHeight" type="boolean" value="true"/>
@@ -456,6 +448,9 @@
                 </Property>
                 <Property name="label" type="java.lang.String" value="Editar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>

@@ -5,24 +5,27 @@
  */
 package Views.CountFrom;
 
-import Views.ClienteFrom.*;
-import Views.Form_home;
-import Views.Generic;
+import Controllers.Item;
+import Controllers.RequestController;
+import Views.MessageBox;
 import Views.ModalForme;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Window;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 public class Form_addConta extends javax.swing.JFrame {
-
-    public Form_addConta() {
+    
+    private final Item item;
+    
+    public Form_addConta() throws Exception {
         initComponents();
+        this.item = new Item();
+        
+        item.getdatacmb(cmb_coin, new RequestController().getCoin("http://localhost:3000/coin"));
+        
+        item.getdatacmbtypeacount(cmb_acounttype, new RequestController().getTypeAccount("http://localhost:3000/typeaccount"));
+        
     }
    
     @SuppressWarnings("unchecked")
@@ -31,17 +34,17 @@ public class Form_addConta extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txt_FirstName = new javax.swing.JTextField();
+        txt_NIF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmb_acounttype = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        txt_FirstName2 = new javax.swing.JTextField();
+        txt_amount = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmb_coin = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -74,13 +77,13 @@ public class Form_addConta extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(50, 50, 56));
 
-        txt_FirstName.setBackground(new java.awt.Color(32, 32, 36));
-        txt_FirstName.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        txt_FirstName.setForeground(new java.awt.Color(255, 255, 255));
-        txt_FirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
-        txt_FirstName.addMouseListener(new java.awt.event.MouseAdapter() {
+        txt_NIF.setBackground(new java.awt.Color(32, 32, 36));
+        txt_NIF.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        txt_NIF.setForeground(new java.awt.Color(255, 255, 255));
+        txt_NIF.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
+        txt_NIF.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_FirstNameMouseClicked(evt);
+                txt_NIFMouseClicked(evt);
             }
         });
 
@@ -92,23 +95,27 @@ public class Form_addConta extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nif do cliente");
 
-        jComboBox1.setBackground(new java.awt.Color(32, 32, 36));
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmb_acounttype.setBackground(new java.awt.Color(32, 32, 36));
+        cmb_acounttype.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        cmb_acounttype.setForeground(new java.awt.Color(255, 255, 255));
+        cmb_acounttype.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmb_acounttype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_acounttypeActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cancelar");
 
-        txt_FirstName2.setBackground(new java.awt.Color(32, 32, 36));
-        txt_FirstName2.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        txt_FirstName2.setForeground(new java.awt.Color(255, 255, 255));
-        txt_FirstName2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
-        txt_FirstName2.addMouseListener(new java.awt.event.MouseAdapter() {
+        txt_amount.setBackground(new java.awt.Color(32, 32, 36));
+        txt_amount.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        txt_amount.setForeground(new java.awt.Color(255, 255, 255));
+        txt_amount.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
+        txt_amount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_FirstName2MouseClicked(evt);
+                txt_amountMouseClicked(evt);
             }
         });
 
@@ -128,11 +135,10 @@ public class Form_addConta extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Tipo de Moeda da Conta");
 
-        jComboBox2.setBackground(new java.awt.Color(32, 32, 36));
-        jComboBox2.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        jComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmb_coin.setBackground(new java.awt.Color(32, 32, 36));
+        cmb_coin.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        cmb_coin.setForeground(new java.awt.Color(255, 255, 255));
+        cmb_coin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -147,7 +153,7 @@ public class Form_addConta extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_FirstName)
+                            .addComponent(txt_NIF)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -158,15 +164,15 @@ public class Form_addConta extends javax.swing.JFrame {
                                         .addGap(28, 28, 28))
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_FirstName2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_amount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(31, 31, 31))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmb_acounttype, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmb_coin, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -177,19 +183,19 @@ public class Form_addConta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_NIF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(9, 9, 9)
-                .addComponent(txt_FirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel18))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_acounttype, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_coin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -311,7 +317,7 @@ public class Form_addConta extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(64, 64, 64)
@@ -372,13 +378,13 @@ public class Form_addConta extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowActivated
 
-    private void txt_FirstNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_FirstNameMouseClicked
+    private void txt_NIFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_NIFMouseClicked
 
-    }//GEN-LAST:event_txt_FirstNameMouseClicked
+    }//GEN-LAST:event_txt_NIFMouseClicked
 
-    private void txt_FirstName2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_FirstName2MouseClicked
+    private void txt_amountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_amountMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_FirstName2MouseClicked
+    }//GEN-LAST:event_txt_amountMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
        new ModalForme(null);
@@ -400,18 +406,28 @@ public class Form_addConta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseClicked
 
+    private void cmb_acounttypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_acounttypeActionPerformed
+        
+        int current = cmb_acounttype.getSelectedIndex();
+        new  MessageBox().show(""+current);
+    }//GEN-LAST:event_cmb_acounttypeActionPerformed
+
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_addConta().setVisible(true);
+                try {
+                    new Form_addConta().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(Form_addConta.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmb_acounttype;
+    private javax.swing.JComboBox<String> cmb_coin;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -431,7 +447,7 @@ public class Form_addConta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField txt_FirstName;
-    private javax.swing.JTextField txt_FirstName2;
+    private javax.swing.JTextField txt_NIF;
+    private javax.swing.JTextField txt_amount;
     // End of variables declaration//GEN-END:variables
 }

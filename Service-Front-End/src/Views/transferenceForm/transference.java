@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BPA.serviceapi.Models;
+package Views.transferenceForm;
 
 /**
  *
  * @author THL
  */
-public class transfer {
+public class transference {
     
     public String iban;
     
     public float amount;
-    
+
     public String debitaccountnumber;    
 }

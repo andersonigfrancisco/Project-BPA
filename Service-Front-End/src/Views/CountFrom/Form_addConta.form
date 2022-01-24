@@ -127,7 +127,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txt_FirstName" max="32767" attributes="0"/>
+                                  <Component id="txt_NIF" max="32767" attributes="0"/>
                                   <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -139,7 +139,7 @@
                                           </Group>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel2" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
-                                              <Component id="txt_FirstName2" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
+                                              <Component id="txt_amount" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
                                               <Component id="jLabel1" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                                               <Component id="jLabel5" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                                           </Group>
@@ -150,9 +150,9 @@
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jComboBox1" min="-2" pref="203" max="-2" attributes="0"/>
+                              <Component id="cmb_acounttype" min="-2" pref="203" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jComboBox2" min="-2" pref="203" max="-2" attributes="0"/>
+                              <Component id="cmb_coin" min="-2" pref="203" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -167,11 +167,11 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_FirstName" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="txt_NIF" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                      <Component id="txt_FirstName2" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="txt_amount" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -179,8 +179,8 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBox1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jComboBox2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="cmb_acounttype" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="cmb_coin" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="46" max="-2" attributes="0"/>
@@ -192,7 +192,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txt_FirstName">
+            <Component class="javax.swing.JTextField" name="txt_NIF">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="24" green="20" red="20" type="rgb"/>
@@ -212,7 +212,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_FirstNameMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_NIFMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
@@ -237,7 +237,7 @@
                 <Property name="text" type="java.lang.String" value="Nif do cliente"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="cmb_acounttype">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="24" green="20" red="20" type="rgb"/>
@@ -249,15 +249,15 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Masculino"/>
-                    <StringItem index="1" value="Femenino"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_acounttypeActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -273,7 +273,7 @@
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FirstName2">
+            <Component class="javax.swing.JTextField" name="txt_amount">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="24" green="20" red="20" type="rgb"/>
@@ -293,7 +293,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_FirstName2MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_amountMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
@@ -340,7 +340,7 @@
                 <Property name="text" type="java.lang.String" value="Tipo de Moeda da Conta"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JComboBox" name="cmb_coin">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="24" green="20" red="20" type="rgb"/>
@@ -352,10 +352,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Masculino"/>
-                    <StringItem index="1" value="Femenino"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -488,7 +485,7 @@
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel17" min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="183" max="32767" attributes="0"/>
+                      <EmptySpace pref="184" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">

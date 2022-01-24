@@ -118,12 +118,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel5" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
-                              <Component id="txt_FirstName1" alignment="0" pref="318" max="32767" attributes="0"/>
+                              <Component id="txt_nif" alignment="0" pref="318" max="32767" attributes="0"/>
                               <Component id="txt_FirstName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cb_gene" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel3" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
-                              <Component id="txt_FirstName2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txt_LastName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btn_adicionar" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jLabel2" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
@@ -156,16 +156,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                      <Component id="txt_FirstName2" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="txt_LastName" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_FirstName1" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="txt_nif" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="cb_gene" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="46" max="-2" attributes="0"/>
-                      <EmptySpace pref="8" max="32767" attributes="0"/>
+                      <Component id="btn_adicionar" min="-2" pref="46" max="-2" attributes="0"/>
+                      <EmptySpace pref="9" max="32767" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -236,7 +236,7 @@
                 <Property name="text" type="java.lang.String" value="Nif "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FirstName1">
+            <Component class="javax.swing.JTextField" name="txt_nif">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="24" green="20" red="20" type="rgb"/>
@@ -256,10 +256,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_FirstName1MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_nifMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="cb_gene">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="24" green="20" red="20" type="rgb"/>
@@ -295,7 +295,7 @@
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FirstName2">
+            <Component class="javax.swing.JTextField" name="txt_LastName">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="24" green="20" red="20" type="rgb"/>
@@ -315,7 +315,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_FirstName2MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_LastNameMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
@@ -329,7 +329,7 @@
                 <Property name="text" type="java.lang.String" value="Ultimo Nome"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btn_adicionar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="23" red="bd" type="rgb"/>
@@ -339,6 +339,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adicionarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>

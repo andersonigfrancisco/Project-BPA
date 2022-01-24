@@ -5,18 +5,15 @@
  */
 package Views.ClienteFrom;
 
-import Views.Form_home;
-import Views.Generic;
-import Views.ModalForme;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Window;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
 
+import Controllers.Client.Person;
+import Controllers.RequestController;
+import Views.Generic;
+import Views.MessageBox;
+import Views.ModalForme;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Form_addCliente extends javax.swing.JFrame {
 
@@ -34,12 +31,12 @@ public class Form_addCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txt_FirstName1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txt_nif = new javax.swing.JTextField();
+        cb_gene = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        txt_FirstName2 = new javax.swing.JTextField();
+        txt_LastName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_adicionar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         pn_left = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -87,33 +84,33 @@ public class Form_addCliente extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nif ");
 
-        txt_FirstName1.setBackground(new java.awt.Color(32, 32, 36));
-        txt_FirstName1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        txt_FirstName1.setForeground(new java.awt.Color(255, 255, 255));
-        txt_FirstName1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
-        txt_FirstName1.addMouseListener(new java.awt.event.MouseAdapter() {
+        txt_nif.setBackground(new java.awt.Color(32, 32, 36));
+        txt_nif.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        txt_nif.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nif.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
+        txt_nif.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_FirstName1MouseClicked(evt);
+                txt_nifMouseClicked(evt);
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(32, 32, 36));
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb_gene.setBackground(new java.awt.Color(32, 32, 36));
+        cb_gene.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        cb_gene.setForeground(new java.awt.Color(255, 255, 255));
+        cb_gene.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        cb_gene.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cancelar");
 
-        txt_FirstName2.setBackground(new java.awt.Color(32, 32, 36));
-        txt_FirstName2.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        txt_FirstName2.setForeground(new java.awt.Color(255, 255, 255));
-        txt_FirstName2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
-        txt_FirstName2.addMouseListener(new java.awt.event.MouseAdapter() {
+        txt_LastName.setBackground(new java.awt.Color(32, 32, 36));
+        txt_LastName.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        txt_LastName.setForeground(new java.awt.Color(255, 255, 255));
+        txt_LastName.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
+        txt_LastName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_FirstName2MouseClicked(evt);
+                txt_LastNameMouseClicked(evt);
             }
         });
 
@@ -121,9 +118,14 @@ public class Form_addCliente extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ultimo Nome");
 
-        jButton1.setBackground(new java.awt.Color(189, 35, 0));
-        jButton1.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
-        jButton1.setText("Cadastrar");
+        btn_adicionar.setBackground(new java.awt.Color(189, 35, 0));
+        btn_adicionar.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        btn_adicionar.setText("Cadastrar");
+        btn_adicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adicionarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,12 +140,12 @@ public class Form_addCliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_FirstName1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                        .addComponent(txt_nif, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                         .addComponent(txt_FirstName)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cb_gene, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_FirstName2)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txt_LastName)
+                        .addComponent(btn_adicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -169,16 +171,16 @@ public class Form_addCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(9, 9, 9)
-                .addComponent(txt_FirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_FirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_nif, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_gene, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(btn_adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,29 +249,53 @@ public class Form_addCliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txt_FirstNameMouseClicked
 
-    private void txt_FirstName1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_FirstName1MouseClicked
+    private void txt_nifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_nifMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_FirstName1MouseClicked
+    }//GEN-LAST:event_txt_nifMouseClicked
 
-    private void txt_FirstName2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_FirstName2MouseClicked
+    private void txt_LastNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_LastNameMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_FirstName2MouseClicked
+    }//GEN-LAST:event_txt_LastNameMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
        new ModalForme(null);
     }//GEN-LAST:event_jLabel6MouseClicked
 
+    private void btn_adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adicionarActionPerformed
+         try {
+            Person obj = new Person();
+            obj.firtname=txt_FirstName.getText();
+            obj.lastname=txt_LastName.getText();
+            obj.nif=txt_nif.getText();
+            obj.Persontype="Singular";
+            obj.gender=cb_gene.getSelectedItem().toString();
+        
+            int result = new RequestController().postclient("http://localhost:3000/person",obj);
+            
+            if(result==200){
+                int res = new  MessageBox().show("Cliente Cadastrada com Sucesso!\n Deseja Cadastrar outra Moeda?");
+                if(res==0)
+                {
+                    txt_FirstName.setText("");
+                    txt_LastName.setText("");
+                    txt_nif.setText("");
+                    cb_gene.setSelectedItem("");
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Form_addCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_adicionarActionPerformed
+
     public static void main(String args[]) {
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Form_addCliente().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Form_addCliente().setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btn_adicionar;
+    private javax.swing.JComboBox<String> cb_gene;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -281,7 +307,7 @@ public class Form_addCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel pn_left;
     private javax.swing.JTextField txt_FirstName;
-    private javax.swing.JTextField txt_FirstName1;
-    private javax.swing.JTextField txt_FirstName2;
+    private javax.swing.JTextField txt_LastName;
+    private javax.swing.JTextField txt_nif;
     // End of variables declaration//GEN-END:variables
 }

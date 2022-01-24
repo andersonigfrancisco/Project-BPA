@@ -3,25 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views.CountFrom;
+package Views.CoinForm;
 
-import Views.ClienteFrom.*;
-import Views.Form_home;
-import Views.Generic;
+import Controllers.Coin.Coin;
+import Controllers.RequestController;
+import Views.MessageBox;
 import Views.ModalForme;
 import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Window;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 
-public class Form_addConta extends javax.swing.JFrame {
 
-    public Form_addConta() {
+public class Form_addCoin extends javax.swing.JFrame {
+
+    public Form_addCoin() {
         initComponents();
     }
    
@@ -31,17 +30,13 @@ public class Form_addConta extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txt_FirstName = new javax.swing.JTextField();
+        txt_desination = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        txt_FirstName2 = new javax.swing.JTextField();
+        txt_sigla = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        btn_add = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -74,65 +69,50 @@ public class Form_addConta extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(50, 50, 56));
 
-        txt_FirstName.setBackground(new java.awt.Color(32, 32, 36));
-        txt_FirstName.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        txt_FirstName.setForeground(new java.awt.Color(255, 255, 255));
-        txt_FirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
-        txt_FirstName.addMouseListener(new java.awt.event.MouseAdapter() {
+        txt_desination.setBackground(new java.awt.Color(32, 32, 36));
+        txt_desination.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        txt_desination.setForeground(new java.awt.Color(255, 255, 255));
+        txt_desination.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
+        txt_desination.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_FirstNameMouseClicked(evt);
+                txt_desinationMouseClicked(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cadastar Empresa");
+        jLabel2.setText("Cadastar Tipos de Moedas");
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Nif do cliente");
-
-        jComboBox1.setBackground(new java.awt.Color(32, 32, 36));
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.setText("Designação");
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cancelar");
 
-        txt_FirstName2.setBackground(new java.awt.Color(32, 32, 36));
-        txt_FirstName2.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        txt_FirstName2.setForeground(new java.awt.Color(255, 255, 255));
-        txt_FirstName2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
-        txt_FirstName2.addMouseListener(new java.awt.event.MouseAdapter() {
+        txt_sigla.setBackground(new java.awt.Color(32, 32, 36));
+        txt_sigla.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        txt_sigla.setForeground(new java.awt.Color(255, 255, 255));
+        txt_sigla.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(32, 32, 36)));
+        txt_sigla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_FirstName2MouseClicked(evt);
+                txt_siglaMouseClicked(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Saldo Inicila da Conta");
+        jLabel5.setText("Sigla");
 
-        jButton1.setBackground(new java.awt.Color(189, 35, 0));
-        jButton1.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
-        jButton1.setText("Cadastrar");
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Tipo de Conta");
-
-        jLabel18.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Tipo de Moeda da Conta");
-
-        jComboBox2.setBackground(new java.awt.Color(32, 32, 36));
-        jComboBox2.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        jComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_add.setBackground(new java.awt.Color(189, 35, 0));
+        btn_add.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        btn_add.setText("Cadastrar");
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,30 +124,17 @@ public class Form_addConta extends javax.swing.JFrame {
                 .addGap(118, 118, 118))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_desination)
+                    .addComponent(btn_add, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_FirstName)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(88, 88, 88)
-                                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_FirstName2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(31, 31, 31))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                            .addComponent(txt_sigla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(31, 31, 31))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,21 +144,13 @@ public class Form_addConta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_desination, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(9, 9, 9)
-                .addComponent(txt_FirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel18))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_sigla, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108)
+                .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
                 .addContainerGap(39, Short.MAX_VALUE))
@@ -208,7 +167,7 @@ public class Form_addConta extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Abrir nova conta");
+        jLabel10.setText("Moedas");
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icon/icons8-adicionar-dólar-18.png"))); // NOI18N
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -231,17 +190,19 @@ public class Form_addConta extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10))
         );
 
         jPanel4.setBackground(new java.awt.Color(50, 50, 56));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Clientes");
+        jLabel12.setText("Moedas Internacionais");
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icon/icons8-bank-25.png"))); // NOI18N
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -263,7 +224,7 @@ public class Form_addConta extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Valores das taxas");
+        jLabel16.setText("Moedas Nacionais");
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icon/icons8-accompany-25.png"))); // NOI18N
         jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -279,8 +240,8 @@ public class Form_addConta extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel17))
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -311,7 +272,7 @@ public class Form_addConta extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(64, 64, 64)
@@ -330,7 +291,7 @@ public class Form_addConta extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -356,7 +317,7 @@ public class Form_addConta extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 851, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,13 +333,13 @@ public class Form_addConta extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowActivated
 
-    private void txt_FirstNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_FirstNameMouseClicked
+    private void txt_desinationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_desinationMouseClicked
 
-    }//GEN-LAST:event_txt_FirstNameMouseClicked
+    }//GEN-LAST:event_txt_desinationMouseClicked
 
-    private void txt_FirstName2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_FirstName2MouseClicked
+    private void txt_siglaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_siglaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_FirstName2MouseClicked
+    }//GEN-LAST:event_txt_siglaMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
        new ModalForme(null);
@@ -400,18 +361,39 @@ public class Form_addConta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseClicked
 
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+        
+        
+        try {
+            Coin obj = new Coin();
+            obj.designation=txt_desination.getText();
+            obj.sigla=txt_sigla.getText();
+        
+            int result = new RequestController().postCoin("http://localhost:3000/coin",obj);
+            
+            if(result==200){
+                int res = new  MessageBox().show("Moeda Cadastrada com Sucesso!\n Deseja Cadastrar outra Moeda?");
+                if(res==0)
+                {
+                    txt_desination.setText("");
+                    txt_sigla.setText("");
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Form_addCoin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_addActionPerformed
+
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_addConta().setVisible(true);
+                new Form_addCoin().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton btn_add;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -421,17 +403,15 @@ public class Form_addConta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField txt_FirstName;
-    private javax.swing.JTextField txt_FirstName2;
+    private javax.swing.JTextField txt_desination;
+    private javax.swing.JTextField txt_sigla;
     // End of variables declaration//GEN-END:variables
 }
