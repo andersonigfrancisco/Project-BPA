@@ -3,26 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers.Client;
+package Controllers.Coin;
+
 import java.util.Date;
+
 /**
  *
  * @author THL
  */
-public class Companies {
+public class Coin {
     
-   
     public int id;
-    
     
     public String designation;
     
-   
-    public String description;
+    public String sigla;
     
-    public Person Person;
-   
-   
     private Date createdat;
     
     private Date updatedat;
@@ -43,20 +39,12 @@ public class Companies {
         this.designation = designation;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSigla() {
+        return sigla;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Person getPerson() {
-        return Person;
-    }
-
-    public void setPerson(Person Person) {
-        this.Person = Person;
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 
     public Date getCreatedat() {
@@ -74,5 +62,4 @@ public class Companies {
     public void setUpdatedat(Date updatedat) {
         this.updatedat = updatedat;
     }
-   
 }

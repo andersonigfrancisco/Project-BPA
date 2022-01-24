@@ -3,40 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BPA.serviceapi.Models;
+package Controllers.TypeAccount;
 import java.util.Date;
 import java.util.UUID;
-import javax.persistence.*;
-import javax.transaction.Transactional;
 /**
  *
  * @author THL
  */
-@Entity(name="typeaccount")
+
 public class TypeAccount {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     
-    @Column(nullable=false, length=150)
     public String designation;
-    
-    @Column(nullable=false, length=150)
+   
     public String code = UUID.randomUUID().toString();
     
-    @Column(nullable=false, length=150)
     public String description;
-   
-    
-    @Basic(optional = false)
-    @Column(insertable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+  
     private Date createdat;
-    
-    @Basic(optional = false)
-    @Column(insertable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+   
     private Date updatedat;
 
     public int getId() {
